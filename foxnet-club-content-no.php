@@ -30,13 +30,13 @@ get_header(); // Loads the header.php template. ?>
 				
 				<?php $kultalusikka_my_child_account = esc_url( home_url( '/'. 'account' ) ); ?>
 				
-				<?php $kultalusikka_my_child_register = esc_url( home_url( '/'. 'register' ) ); ?>
+				<?php $kultalusikka_my_child_support = esc_url( home_url( '/'. 'downloads/buy-support/' ) ); ?>
 				
 					<div class="alert">
 						<?php if ( !is_user_logged_in() ) { ?>
-							<p><?php printf( __( 'This page can only be viewed by exclusive members of the Foxnet Theme club.  If you\'re already a member, please take a moment to <a href="%1$s" title="Account">log into</a> the site. If not, please consider purchasing one of the themes here. Or you can <a href="%2$s" title="Register">register</a> to the site.', 'kultalusikka-my-child' ), $kultalusikka_my_child_account, $kultalusikka_my_child_register ); ?></p>
+							<p><?php printf( __( 'This page can only be viewed by members of the Foxnet Theme. If you\'re already a member, please take a moment to <a href="%1$s" title="Account">log into</a> the site. If not, please consider purchasing one of the themes here. Or you can <a href="%2$s" title="Register">buy support</a> to the site.', 'kultalusikka-my-child' ), $kultalusikka_my_child_account, $kultalusikka_my_child_support ); ?></p>
 						<?php } else { ?>
-							<p><?php printf( __( 'This page can only be viewed by exclusive members of the Foxnet Theme club. Please consider purchasing one of the themes here. Just head on over the <a href="%1$s" title="account">account page</a> and upgrade your membership.', 'kultalusikka-my-child' ), $kultalusikka_my_child_account ); ?></p>
+							<p><?php printf( __( 'This page can only be viewed by members of the Foxnet Theme. Please consider purchasing one of the themes here and you get access to support again. Just head on over the <a href="%1$s" title="account">account page</a> and follow to white rabbit.', 'kultalusikka-my-child' ), $kultalusikka_my_child_account ); ?></p>
 						<?php } ?>
 					</div>
 				
