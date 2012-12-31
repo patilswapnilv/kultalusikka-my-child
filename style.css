@@ -211,6 +211,16 @@ p.edd_error { margin: 0 !important; }
 .edd_sl_license_key { position: absolute; right: -120%; top: 0; border: 1px solid #ddd; background: #f0f0f0; padding: 4px; }
 
 
+/* =EDD download info
+-------------------------------------------------------------- */
+
+span.edd-download-info-version,
+span.edd-download-info-download,
+span.edd-download-info-updated {
+	font-weight: bold;
+}
+
+
 /* =Media queries
 -------------------------------------------------------------- */
 
