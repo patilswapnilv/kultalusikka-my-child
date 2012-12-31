@@ -44,6 +44,12 @@ function kultalusikka_my_child_theme_setup() {
 	/* Enqueue scripts. */
 	add_action( 'wp_enqueue_scripts', 'kultalusikka_my_child_scripts_styles' );
 	
+	/* Filter breadcrumb in dowload_category page. There is wrong post type. */
+	add_filter( 'breadcrumb_trail_items', 'kultalusikka_my_child_breadcrumb_trail_items' );
+	
+	/* Show doc_category on singular doc page. */
+	add_filter( 'breadcrumb_trail_args', 'kultalusikka_my_child_breadcrumb_trail_args' );
+	
 }
 
 /**
@@ -159,6 +165,35 @@ function kultalusikka_my_child_scripts_styles() {
 		wp_dequeue_style( 'edd-sl' );
 		
 	}
+}
+
+/**
+ * Filter breadcrumb in dowload_category page. There is wrong post type.
+ *
+ * @since 0.1.0
+ */
+function kultalusikka_my_child_breadcrumb_trail_items( $items ) {
+
+	if ( is_tax( 'download_category' ) || is_category() || is_tag() ) {
+
+		$items = array_splice( $items, 0, -2 ); // Take second last argument of from breadcrumb.
+		$items[] = single_term_title( '', false ); // Add single term title.
+		
+	}
+
+	return $items;
+}
+
+/**
+ * Show doc_category on singular doc page.
+ *
+ * @since 0.1.0
+ */
+function kultalusikka_my_child_breadcrumb_trail_args( $args ) {
+
+	$args['singular_doc_taxonomy'] = 'doc_category';
+
+	return $args;
 }
 
 ?>
