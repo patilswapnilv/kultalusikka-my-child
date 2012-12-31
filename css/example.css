@@ -1,0 +1,9 @@
+/**
+ * Style Name: Example
+ * Choose "Example" to the "Stylesheet" metabox to use "css/example.css" stylesheet while on the post editor.
+ */
+
+/* Some basic style changes to use an example. */
+#header {
+    background: url("../../kultalusikka/images/header_bg.png") #363d40;
+}

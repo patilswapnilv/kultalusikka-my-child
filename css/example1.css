@@ -1,0 +1,9 @@
+/**
+ * Style Name: Example 1
+ * Choose "Example 1" to the "Stylesheet" metabox to use "css/example1.css" stylesheet while on the post editor.
+ */
+
+/* Some basic style changes to use an example. */
+#header {
+    background: #363d40;
+}
