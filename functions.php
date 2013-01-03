@@ -44,11 +44,11 @@ function kultalusikka_my_child_theme_setup() {
 	/* Enqueue scripts. */
 	add_action( 'wp_enqueue_scripts', 'kultalusikka_my_child_scripts_styles' );
 	
-	/* Filter breadcrumb in dowload_category page. There is wrong post type. */
-	add_filter( 'breadcrumb_trail_items', 'kultalusikka_my_child_breadcrumb_trail_items' );
-	
 	/* Show doc_category on singular doc page. */
 	add_filter( 'breadcrumb_trail_args', 'kultalusikka_my_child_breadcrumb_trail_args' );
+	
+	/* Add front page callout text. */
+	//add_action( "{$prefix}_before_front_page_sidebar", 'kultalusikka_my_child_add_callout' );
 	
 }
 
@@ -168,32 +168,29 @@ function kultalusikka_my_child_scripts_styles() {
 }
 
 /**
- * Filter breadcrumb in dowload_category page. There is wrong post type.
- *
- * @since 0.1.0
- */
-function kultalusikka_my_child_breadcrumb_trail_items( $items ) {
-
-	if ( is_tax( 'download_category' ) || is_category() || is_tag() ) {
-
-		$items = array_splice( $items, 0, -2 ); // Take second last argument of from breadcrumb.
-		$items[] = single_term_title( '', false ); // Add single term title.
-		
-	}
-
-	return $items;
-}
-
-/**
- * Show doc_category on singular doc page.
+ * Show doc_category on singular doc page. And show download_category on singular downloads page.
  *
  * @since 0.1.0
  */
 function kultalusikka_my_child_breadcrumb_trail_args( $args ) {
 
 	$args['singular_doc_taxonomy'] = 'doc_category';
+	
+	$args['singular_download_taxonomy'] = 'download_category';
 
 	return $args;
+}
+
+/**
+ * Add callout text.
+ *
+ * @since 0.1.0
+ */
+function kultalusikka_my_child_add_callout() { ?>
+
+	<div class="kultalusikka-callout"><p>All themes are responsive and build on Hybrid Core. Commercial themes are also reviewed by Justin Tadlock.</p></div>
+	
+	<?php
 }
 
 ?>
