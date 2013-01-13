@@ -47,8 +47,8 @@ function kultalusikka_my_child_theme_setup() {
 	/* Show doc_category on singular doc page. */
 	add_filter( 'breadcrumb_trail_args', 'kultalusikka_my_child_breadcrumb_trail_args' );
 	
-	/* Add front page callout text. */
-	//add_action( "{$prefix}_before_front_page_sidebar", 'kultalusikka_my_child_add_callout' );
+	/* Add logout link in primary menu. */
+	add_filter( 'wp_nav_menu', 'kultalusikka_my_child_add_logout', 10, 2 );
 	
 }
 
@@ -182,15 +182,22 @@ function kultalusikka_my_child_breadcrumb_trail_args( $args ) {
 }
 
 /**
- * Add callout text.
+ * Add logout link in primary menu when user is logged in.
  *
  * @since 0.1.0
  */
-function kultalusikka_my_child_add_callout() { ?>
+function kultalusikka_my_child_add_logout( $menu, $args ) {
 
-	<div class="kultalusikka-callout"><p>All themes are responsive and build on Hybrid Core. Commercial themes are also reviewed by Justin Tadlock.</p></div>
+	if ( is_user_logged_in() ) {
 	
-	<?php
+		if ( 'primary' == $args->theme_location ) {
+			$links = '<li class="logout"><a href="' . wp_logout_url( get_permalink() ) . '">' . __( 'Logout', 'kultalusikka-my-child' ) . '</a></li>';
+			$menu = str_replace( '</ul></div>', $links . '</ul></div>', $menu );
+		}
+	
+	}
+
+	return $menu;
 }
 
 ?>
