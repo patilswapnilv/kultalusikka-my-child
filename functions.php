@@ -164,6 +164,9 @@ function kultalusikka_my_child_scripts_styles() {
 		/* Dequeue  EDD software license css. These are added in a theme to save extra load. */
 		wp_dequeue_style( 'edd-sl' );
 		
+		/* Dequeue  bbPress css. These are added in a theme to save extra load. */
+		wp_dequeue_style( 'bbp-parent-bbpress' );
+		
 	}
 }
 
