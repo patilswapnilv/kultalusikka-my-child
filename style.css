@@ -75,6 +75,29 @@
 	font-size: 5rem;
 }
 
+#sidebar-after-singular-download {
+	background: #fff;
+	border-bottom: 4px solid #90b535;
+	margin-bottom: 28px;
+	margin-bottom: 2rem;
+	padding-bottom: 24px;
+	padding-bottom: 1.71429rem;
+	padding-top: 24px;
+	padding-top: 1.71429rem;
+}
+
+
+/* Minimum width of 696 pixels. */
+@media screen and (min-width: 696px) {
+
+#sidebar-after-singular-download {
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+}
+
 
 /**
  * Easy Digital Downloads Styles
