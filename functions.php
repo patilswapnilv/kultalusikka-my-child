@@ -29,7 +29,8 @@ function kultalusikka_my_child_theme_setup() {
 	// add_filter( "{$prefix}_site_title", 'kultalusikka_my_child_example_filter' );
 	
 	/* Add button for new topic. */
-	add_action( "{$prefix}_before_topic_loop", 'kultalusikka_my_child_add_new_topic' );
+	//add_action( "{$prefix}_before_topic_loop", 'kultalusikka_my_child_add_new_topic' );
+	add_action( 'bbp_template_before_topics_loop', 'kultalusikka_my_child_add_new_topic' );
 	
 	/* Load template for not Foxnet Theme club members. */
 	add_filter( 'template_include', 'kultalusikka_my_child_club_member_template', 99 );
@@ -58,6 +59,9 @@ function kultalusikka_my_child_theme_setup() {
  * @since 0.1.0
  */
 function kultalusikka_my_child_add_new_topic() {
+
+	if( ! is_post_type_archive( 'topic' ) )
+		return;
 
 	$kultalusikka_my_child_add_new_topic_url = esc_url( home_url( '/'. 'add-new-topic' ) );
 	$kultalusikka_my_child_add_new_topic = esc_attr(  __( 'Add new topic', 'kultalusikka' ) ); ?>
@@ -159,7 +163,7 @@ function kultalusikka_my_child_scripts_styles() {
 	if ( !is_admin() ) {
 	
 		/* Dequeue  EDD styles. These are added in a theme to save extra load. */
-		wp_dequeue_style( 'edd-styles' );
+		//wp_dequeue_style( 'edd-styles' );
 		
 		/* Dequeue  EDD software license css. These are added in a theme to save extra load. */
 		wp_dequeue_style( 'edd-sl' );
